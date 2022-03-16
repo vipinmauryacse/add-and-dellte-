@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud opertion</title>
+  
+</head>
+<body>
+    <h2>This is Crud opertion.</h2>
+    <div>
+        <div class="flex-child-element" >
+      
+            
+            <div>emp:<input type="text" placeholder="addEntity" id="emp">
+            
+            <div>city:<input type="text" placeholder="city" id="city">
+            
+            <div>salary:<input type="text" placeholder="salary" id="salary">
+
+            <div><button onclick="submit()">submit</button></div>
+
+
+            
+                
+
+              
+
+
+        
+
+    </div>
+    <div class="flex-child-element ">
+        <span id="msg"></span>
+    </div>
+    
+</body>
+
+<script>
+
+let database=[]
+function submit(){
+    var n=document.getElementById("emp").value
+var i=document.getElementById("city").value
+var s=document.getElementById("salary").value
+    let obj={emp:n,city:i,salary:s}
+    database.push(obj)
+    onload()
+} 
+
+
+function onload(){
+    tbl=`<table border='1' width='400' <tr><th>emp</th><th>city</th><th>salary</th><th>DELETE</th></tr>`
+    database.forEach(function(x,i) {
+        tbl+=`<tr><th>${x.emp}</th><th>${x.city}</th><th>${x.salary}</th>
+        <th><button onclick="delete1(${i})">DELETE</button></th></tr>`
+        
+    });
+    
+  
+document.getElementById("msg").innerHTML=tbl
+}
+function delete1(value){
+    database.splice(value,1)
+    onload()
+
+}
+
+
+</script>
+</html>
